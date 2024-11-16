@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HdIdleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1dcf5270e5cd46572350794bce29eb81702b3133")]
 [assembly: System.Reflection.AssemblyProductAttribute("HdIdleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HdIdleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

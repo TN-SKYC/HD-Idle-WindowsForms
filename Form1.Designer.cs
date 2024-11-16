@@ -42,7 +42,7 @@
             this.cmbDrives.FormattingEnabled = true;
             this.cmbDrives.Location = new System.Drawing.Point(20, 20);
             this.cmbDrives.Name = "cmbDrives";
-            this.cmbDrives.Size = new System.Drawing.Size(200, 24);
+            this.cmbDrives.Size = new System.Drawing.Size(400, 24);
             this.cmbDrives.TabIndex = 0;
 
             // 
