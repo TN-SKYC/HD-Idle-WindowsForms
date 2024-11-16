@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             this.cmbDrives = new System.Windows.Forms.ComboBox();
-            this.txtIdleTime = new System.Windows.Forms.TextBox();
+//            this.txtIdleTime = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -48,10 +48,10 @@
             // 
             // txtIdleTime
             // 
-            this.txtIdleTime.Location = new System.Drawing.Point(20, 60);
-            this.txtIdleTime.Name = "txtIdleTime";
-            this.txtIdleTime.Size = new System.Drawing.Size(100, 22);
-            this.txtIdleTime.TabIndex = 1;
+            // this.txtIdleTime.Location = new System.Drawing.Point(20, 60);
+            // this.txtIdleTime.Name = "txtIdleTime";
+            // this.txtIdleTime.Size = new System.Drawing.Size(100, 22);
+            // this.txtIdleTime.TabIndex = 1;
 
             // 
             // txtOutput

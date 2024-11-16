@@ -11,7 +11,7 @@ namespace HdIdleApp
             InitializeComponent();
         }
 
- private void Form1_Load(object sender, EventArgs e)
+private void Form1_Load(object sender, EventArgs e)
 {
     // Clear previous items in the ComboBox
     cmbDrives.Items.Clear();
@@ -27,27 +27,40 @@ namespace HdIdleApp
             string model = disk["Model"]?.ToString() ?? "Unknown Model";
             string deviceID = disk["DeviceID"]?.ToString() ?? "Unknown Device ID";
 
-            // Add the disk model to the ComboBox
-            cmbDrives.Items.Add(model);
+            // Collect all associated drive letters (partitions)
+            string driveLetters = "";
 
-            // Log the disk details (optional)
-            Console.WriteLine($"Disk: {model}, Device ID: {deviceID}");
-
-            // Search for associated partitions
             ManagementObjectSearcher partitionSearcher = new ManagementObjectSearcher(
                 $"ASSOCIATORS OF {{Win32_DiskDrive.DeviceID='{deviceID}'}} WHERE AssocClass=Win32_DiskDriveToDiskPartition");
 
             foreach (ManagementObject partition in partitionSearcher.Get())
             {
                 string partitionDeviceID = partition["DeviceID"]?.ToString() ?? "Unknown Partition Device ID";
-                string partitionType = partition["Type"]?.ToString() ?? "Unknown Partition Type";
 
-                // Optionally, you can log the partition info or use it in the UI
-                Console.WriteLine($"Partition Device ID: {partitionDeviceID}, Type: {partitionType}");
+                // Use the partition device ID to find the associated logical drives (letters)
+                ManagementObjectSearcher logicalSearcher = new ManagementObjectSearcher(
+                    $"ASSOCIATORS OF {{Win32_DiskPartition.DeviceID='{partitionDeviceID}'}} WHERE AssocClass=Win32_LogicalDiskToPartition");
 
-                // Add partition details as a sub-item under the corresponding disk (if you want to show partitions as well)
-                cmbDrives.Items.Add($"   Partition: {partitionDeviceID}, Type: {partitionType}");
+                foreach (ManagementObject logical in logicalSearcher.Get())
+                {
+                    string driveLetter = logical["DeviceID"]?.ToString();  // This is the drive letter (e.g., C:, D:)
+                    if (!string.IsNullOrEmpty(driveLetter))
+                    {
+                        if (!string.IsNullOrEmpty(driveLetters))
+                            driveLetters += ", ";
+                        driveLetters += driveLetter;
+                    }
+                }
             }
+
+            // Display disk model along with its drive letters in the ComboBox
+            if (!string.IsNullOrEmpty(driveLetters))
+                cmbDrives.Items.Add($"{model} - ({driveLetters})");
+            else
+                cmbDrives.Items.Add(model);
+
+            // Log the disk details (optional)
+            Console.WriteLine($"Disk: {model}, Device ID: {deviceID}, Drive Letters: {driveLetters}");
         }
     }
     catch (Exception ex)
