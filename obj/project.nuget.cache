@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "/OFmPSbY2P9gtv+xfXqZ/AtdkQ1+V+KwLcz5WtxxHfys4L7EOr8rsmQTXRSl3KKQ6U0vlamfK9B4U3hqL0Ej2w==",
+  "success": true,
+  "projectFilePath": "C:\\Programy\\!Test\\HD-Idle-Windows-Forms\\HdIdleApp\\HdIdleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\T\\.nuget\\packages\\system.codedom\\9.0.0\\system.codedom.9.0.0.nupkg.sha512",
+    "C:\\Users\\T\\.nuget\\packages\\system.management\\9.0.0\\system.management.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
